@@ -504,3 +504,63 @@ opacity:0;
     }
 
 }
+
+/* Final Scene 🎆 */
+
+.final-scene{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+
+}
+
+
+.final-scene h1{
+
+    color:#FFD700;
+
+    font-size:45px;
+
+    animation:glow 2s infinite alternate;
+
+}
+
+
+.final-scene h2{
+
+    font-size:30px;
+
+}
+
+
+.final-scene p{
+
+    font-size:22px;
+
+    line-height:1.6;
+
+}
+
+
+@keyframes glow{
+
+    from{
+        text-shadow:0 0 10px #FFD700;
+    }
+
+    to{
+        text-shadow:0 0 35px #ff2d55;
+    }
+
+}
