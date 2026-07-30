@@ -115,6 +115,42 @@ body{
 .timeline h2{
     text-align:center;
     margin-bottom:35px;
+
+  h/* Shooting Stars 🌠 */
+
+.shooting-star{
+
+    position:fixed;
+
+    width:3px;
+    height:80px;
+
+    background:white;
+
+    transform:rotate(45deg);
+
+    box-shadow:0 0 20px white;
+
+    animation:shoot 3s linear forwards;
+
+    z-index:5;
+
+}
+
+
+@keyframes shoot{
+
+    from{
+        opacity:1;
+        transform:translate(0,0) rotate(45deg);
+    }
+
+    to{
+        opacity:0;
+        transform:translate(200px,200px) rotate(45deg);
+    }
+
+}
 }
 
 .card{
