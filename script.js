@@ -96,3 +96,22 @@ function createHeart(){
 setInterval(createHeart,1200);
 
 alert("Forever Begins Here ❤️ Script is working!");
+// Shooting Stars 🌠
+
+function createStar(){
+
+    const star = document.createElement("div");
+
+    star.className = "shooting-star";
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 50 + "vh";
+
+    document.body.appendChild(star);
+
+    setTimeout(()=>{
+        star.remove();
+    },3000);
+}
+
+setInterval(createStar,2500);
