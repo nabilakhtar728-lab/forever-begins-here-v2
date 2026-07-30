@@ -408,3 +408,41 @@ opacity:0;
 
 }
 }
+
+/* Photo Gallery 📸 */
+
+.gallery{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.gallery h1{
+    color:#FFD700;
+    font-size:35px;
+}
+
+.photos{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.photo-card{
+    width:250px;
+    height:250px;
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,215,0,0.4);
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.photo-card img:hover{
+    transform:scale(1.1);
+}
