@@ -58,3 +58,19 @@ function updateCounter() {
         `;
     }
 }
+// Music Button
+
+const musicBtn = document.getElementById("musicBtn");
+const loveSong = document.getElementById("loveSong");
+
+if (musicBtn && loveSong) {
+    musicBtn.addEventListener("click", () => {
+        if (loveSong.paused) {
+            loveSong.play();
+            musicBtn.innerHTML = "⏸ Pause Our Song ❤️";
+        } else {
+            loveSong.pause();
+            musicBtn.innerHTML = "▶ Play Our Song ❤️";
+        }
+    });
+}
