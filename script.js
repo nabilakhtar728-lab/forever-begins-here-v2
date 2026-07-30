@@ -126,7 +126,6 @@ yesBtn.addEventListener("click",()=>{
 
     document.body.innerHTML += `
     <div class="celebration">
-        <h1>❤️ Forever Begins Here ❤️</h1>
         <h2>NABIL AKHTAR ❤️ TAHURA FAIZ</h2>
         <p>10 August 2022 → Forever ♾️</p>
     </div>
