@@ -337,5 +337,74 @@ footer{
         transform:translateY(-110vh);
         opacity:0;
     }
+/* Proposal Celebration 💍 */
 
+.celebration{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:black;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+z-index:9999;
+
+}
+
+
+.celebration h1{
+
+color:#FFD700;
+
+font-size:45px;
+
+}
+
+
+.confetti{
+
+position:fixed;
+
+top:-50px;
+
+animation:fall 5s linear forwards;
+
+z-index:999;
+
+}
+
+
+@keyframes fall{
+
+from{
+
+transform:translateY(0) rotate(0);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateY(100vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
 }
