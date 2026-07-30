@@ -444,5 +444,63 @@ opacity:0;
 }
 
 .photo-card img:hover{
-    transform:scale(1.1);
+    transform:scale(/* Rose Petals 🌹 */
+
+.rose-petal{
+
+    position:fixed;
+    top:-50px;
+
+    animation:fallPetal 8s linear forwards;
+
+    z-index:20;
+
+    pointer-events:none;
+}
+
+
+@keyframes fallPetal{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+
+}
+
+
+   
+}
+/* Rose Petals 🌹 */
+
+.rose-petal{
+
+    position:fixed;
+    top:-50px;
+
+    animation:fallPetal 8s linear forwards;
+
+    z-index:20;
+
+    pointer-events:none;
+}
+
+
+@keyframes fallPetal{
+
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+
 }
