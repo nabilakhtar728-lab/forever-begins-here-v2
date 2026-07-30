@@ -166,3 +166,23 @@ confetti.remove();
 },5000);
 
 }
+// Falling Rose Petals 🌹
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.className = "rose-petal";
+    petal.innerHTML = "🌹";
+
+    petal.style.left = Math.random()*100+"vw";
+    petal.style.fontSize = (15+Math.random()*25)+"px";
+
+    document.body.appendChild(petal);
+
+    setTimeout(()=>{
+        petal.remove();
+    },8000);
+}
+
+setInterval(createPetal,2000);
