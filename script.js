@@ -74,3 +74,23 @@ if (musicBtn && loveSong) {
         }
     });
 }
+// Floating Hearts ❤️
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 30) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    },8000);
+}
+
+setInterval(createHeart,1200);
