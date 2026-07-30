@@ -115,3 +115,55 @@ function createStar(){
 }
 
 setInterval(createStar,2500);
+
+// Proposal Celebration 💍❤️
+
+const yesBtn = document.getElementById("yesBtn");
+
+if(yesBtn){
+
+yesBtn.addEventListener("click",()=>{
+
+    document.body.innerHTML += `
+    <div class="celebration">
+        <h1>❤️ Forever Begins Here ❤️</h1>
+        <h2>NABIL AKHTAR ❤️ TAHURA FAIZ</h2>
+        <p>10 August 2022 → Forever ♾️</p>
+    </div>
+    `;
+
+
+    for(let i=0;i<80;i++){
+
+        createConfetti();
+
+    }
+
+});
+
+}
+
+
+function createConfetti(){
+
+const confetti=document.createElement("div");
+
+confetti.className="confetti";
+
+confetti.innerHTML="❤️";
+
+confetti.style.left=Math.random()*100+"vw";
+
+confetti.style.fontSize=
+(15+Math.random()*30)+"px";
+
+document.body.appendChild(confetti);
+
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},5000);
+
+}
