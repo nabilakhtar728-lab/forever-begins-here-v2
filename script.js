@@ -94,3 +94,5 @@ function createHeart(){
 }
 
 setInterval(createHeart,1200);
+
+alert("Forever Begins Here ❤️ Script is working!");
