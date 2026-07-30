@@ -1,0 +1,251 @@
+/* ===========================
+   Forever Begins Here ❤️
+   Part 1 - Layout & Intro
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Georgia,serif;
+    overflow-x:hidden;
+}
+
+/* Intro Screen */
+
+.intro{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    background:linear-gradient(to bottom,#000,#111);
+}
+
+.intro h3{
+    font-size:24px;
+    margin:12px 0;
+    opacity:0;
+    animation:fadeIn 1.5s forwards;
+}
+
+.intro h3:nth-child(1){animation-delay:.5s;}
+.intro h3:nth-child(2){animation-delay:2s;}
+.intro h3:nth-child(3){animation-delay:3.5s;}
+
+.intro h1{
+    color:#FFD700;
+    font-size:48px;
+    margin:35px 0;
+    text-shadow:0 0 20px gold;
+    animation:glow 2s infinite alternate;
+}
+
+#startBtn{
+    background:#ff2d55;
+    color:#fff;
+    border:none;
+    padding:16px 35px;
+    border-radius:50px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#startBtn:hover{
+    transform:scale(1.08);
+}
+
+.hidden{
+    display:none;
+}
+
+/* Main Page */
+
+.title{
+    text-align:center;
+    font-size:44px;
+    color:#FFD700;
+    margin-top:80px;
+    text-shadow:0 0 15px gold;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:22px;
+    margin:20px 0 50px;
+}
+
+.counter{
+    width:90%;
+    max-width:700px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    text-align:center;
+}
+
+#counter{
+    font-size:28px;
+    margin-top:15px;
+    color:#FFD700;
+}
+
+/* Timeline */
+
+.timeline{
+    width:90%;
+    max-width:900px;
+    margin:70px auto;
+}
+
+.timeline h2{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    backdrop-filter:blur(12px);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* Proposal */
+
+.proposal{
+    text-align:center;
+    padding:80px 20px;
+}
+
+#yesBtn{
+    margin-top:25px;
+    padding:15px 40px;
+    border:none;
+    border-radius:40px;
+    background:#ff2d55;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#aaa;
+}
+
+/* Animations */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px gold;
+    }
+    to{
+        text-shadow:0 0 30px #fff;
+
+      /* ===========================
+   Part 2 - Stars & Effects
+=========================== */
+
+/* Animated Star Background */
+
+.stars{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    background-image:
+        radial-gradient(2px 2px at 20px 30px,#fff,transparent),
+        radial-gradient(2px 2px at 80px 120px,#fff,transparent),
+        radial-gradient(1px 1px at 160px 50px,#fff,transparent),
+        radial-gradient(2px 2px at 250px 180px,#fff,transparent),
+        radial-gradient(1px 1px at 320px 90px,#fff,transparent);
+    background-size:350px 350px;
+    animation:moveStars 40s linear infinite;
+    opacity:.8;
+}
+
+@keyframes moveStars{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-350px);
+    }
+}
+
+/* Floating Hearts */
+
+.floating-heart{
+    position:fixed;
+    bottom:-30px;
+    color:#ff4d88;
+    animation:floatHeart 8s linear forwards;
+    pointer-events:none;
+    z-index:999;
+}
+
+@keyframes floatHeart{
+    from{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) scale(1.8);
+        opacity:0;
+    }
+}
+
+/* Glass Glow */
+
+.card{
+    box-shadow:0 0 20px rgba(255,215,0,.18);
+}
+
+.card:hover{
+    box-shadow:0 0 35px rgba(255,215,0,.45);
+}
+
+/* Yes Button */
+
+#yesBtn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 25px #ff2d55;
+}
+      
+    }
+}
