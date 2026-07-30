@@ -249,3 +249,31 @@ footer{
       
     }
 }
+/* Music Section */
+
+.music-section{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.music-section h2{
+    color:#FFD700;
+    margin-bottom:20px;
+    font-size:30px;
+}
+
+#musicBtn{
+    background:#ff2d55;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    font-size:20px;
+    border-radius:40px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#musicBtn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #ff2d55;
+}
