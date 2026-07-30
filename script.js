@@ -186,3 +186,24 @@ function createPetal(){
 }
 
 setInterval(createPetal,2000);
+
+// Fireworks 🎆
+
+function createFirework(){
+
+    const firework = document.createElement("div");
+
+    firework.className = "firework";
+    firework.innerHTML = "✨";
+
+    firework.style.left = Math.random()*100+"vw";
+    firework.style.top = (20+Math.random()*40)+"vh";
+
+    document.body.appendChild(firework);
+
+    setTimeout(()=>{
+        firework.remove();
+    },2000);
+}
+
+setInterval(createFirework,1500);
