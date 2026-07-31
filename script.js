@@ -9,26 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const beginBtn = document.getElementById('begin-story');
 
     // Dates
-    const startDateStr = "10 August 2022 00:00:00"; // Important: Specify date & time
+    const startDateStr = "10 August 2022 00:00:00";
 
     /* --- INTRO / PRELOADER --- */
     window.addEventListener('load', function() {
-        // Allow preloader to show for a minimum of 4 seconds for cinematic effect
         setTimeout(function() {
             preloader.classList.add('fade-out');
             mainContent.classList.add('fade-in');
             body.classList.remove('is-loading');
-            
-            // Re-check scroll animations after intro
             animateOnScroll();
         }, 4500); 
     });
 
     /* --- Begin Our Story Button --- */
     beginBtn.addEventListener('click', function() {
-        // Try autoplay music if allowed
         tryAutoplay();
-        // Smooth scroll to first section
         document.getElementById('love-story').scrollIntoView({ behavior: 'smooth' });
     });
 
@@ -55,10 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* --- FUNCTION DEFINITIONS --- */
 
-/* 1. FX & Particles */
 function initParticleLayer() {
-    // Basic setup for floating items. For true cinematic effect, would use Canvas.
-    // This adds divs to represent fireflies/petals for simplicity/no-library reqs.
     const fxLayer = document.querySelector('.fireflies');
     const particleCount = 50;
 
@@ -77,7 +69,6 @@ function initParticleLayer() {
     }
 }
 
-// Simple float animation in JS to add keyframes dynamic
 const floatKeyframes = `@keyframes floatParticle {
     0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
     50% { transform: translateY(-30px) translateX(${Math.random() * 20 - 10}px); opacity: 1; }
@@ -85,7 +76,6 @@ const floatKeyframes = `@keyframes floatParticle {
 const styleSheet = document.createElement("style");
 styleSheet.innerText = floatKeyframes;
 document.head.appendChild(styleSheet);
-
 
 function initMouseMoveGlow() {
     const mouseGlow = document.getElementById('mouse-glow');
@@ -98,7 +88,6 @@ function initMouseMoveGlow() {
 }
 
 function initCursorSparkle() {
-    // Minimal sparkle on click
     document.addEventListener('click', function(e) {
         const sparkle = document.createElement('div');
         sparkle.classList.add('cursor-sparkle');
@@ -109,7 +98,6 @@ function initCursorSparkle() {
     });
 }
 
-/* 2. Music Player */
 const audio = document.getElementById('romantic-audio');
 const playPauseBtn = document.getElementById('play-pause');
 const volumeSlider = document.getElementById('volume-slider');
@@ -128,7 +116,6 @@ function togglePlay() {
     } else {
         audio.play().catch(e => {
             console.error("Autoplay prevented:", e);
-            alert("To experience the cinematic magic, please allow the browser to play audio.");
         });
         playPauseBtn.innerHTML = '❤️';
         playPauseBtn.classList.add('glowing-icon');
@@ -137,14 +124,11 @@ function togglePlay() {
 }
 
 function tryAutoplay() {
-    // Modern browsers prevent autoplay without interaction.
-    // The "Begin Our Story" button click will handle this.
     if (!isPlaying) {
         togglePlay();
     }
 }
 
-/* 3. Live Counter */
 function initLiveCounter(startDate) {
     const start = new Date(startDate);
     const counterElements = {
@@ -158,16 +142,15 @@ function initLiveCounter(startDate) {
 
     function updateCounter() {
         const now = new Date();
-        const diff = now - start; // milliseconds
+        const diff = now - start;
 
         if (diff <= 0) return;
 
-        // Simplified calculation (ignoring leap years/precise month durations for pure JS simplicity)
         const msPerSec = 1000;
         const msPerMin = msPerSec * 60;
         const msPerHour = msPerMin * 60;
         const msPerDay = msPerHour * 24;
-        const msPerMonth = msPerDay * 30.44; // Avg
+        const msPerMonth = msPerDay * 30.44;
         const msPerYear = msPerDay * 365.25;
 
         counterElements.years.innerText = Math.floor(diff / msPerYear);
@@ -179,10 +162,9 @@ function initLiveCounter(startDate) {
     }
 
     setInterval(updateCounter, 1000);
-    updateCounter(); // Initial call
+    updateCounter();
 }
 
-/* 4. Scroll Animations */
 const scrollElements = document.querySelectorAll('.js-scroll-animate, .timeline-item, .reason-card');
 
 function initScrollAnimations() {
@@ -193,7 +175,6 @@ function initScrollAnimations() {
 function animateOnScroll() {
     scrollElements.forEach(el => {
         if (elementInViewport(el)) {
-            // Find child with data-animate attribute
             const animationElement = el.hasAttribute('data-animate') ? el : el.querySelector('[data-animate]');
             if (animationElement && !animationElement.classList.contains('animate-active')) {
                 animationElement.classList.add('animate-active');
@@ -204,11 +185,10 @@ function animateOnScroll() {
 
 function elementInViewport(el) {
     const rect = el.getBoundingClientRect();
-    const threshold = window.innerHeight * 0.8; // Trigger when 80% is in view
+    const threshold = window.innerHeight * 0.8;
     return (rect.top <= threshold);
 }
 
-/* 5. Gallery & Lightbox */
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -226,14 +206,12 @@ function initGallery() {
     prevBtn.addEventListener('click', () => changePhoto(-1));
     nextBtn.addEventListener('click', () => changePhoto(1));
 
-    // Close lightbox on click outside image
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
             closeLightbox();
         }
     });
 
-    // Handle keyboard nav
     document.addEventListener('keydown', function(e) {
         if (!lightbox.classList.contains('active')) return;
         if (e.key === "Escape") closeLightbox();
@@ -247,7 +225,7 @@ function openLightbox(index) {
     const imgSrc = galleryItems[index].querySelector('img').src;
     lightboxImg.src = imgSrc;
     lightbox.classList.add('active');
-    body.classList.add('is-loading'); // Prevent scrolling body
+    body.classList.add('is-loading');
 }
 
 function closeLightbox() {
@@ -260,7 +238,6 @@ function changePhoto(direction) {
     if (currentPhotoIndex < 0) currentPhotoIndex = galleryItems.length - 1;
     if (currentPhotoIndex >= galleryItems.length) currentPhotoIndex = 0;
     
-    // Add Ken Burns type fade on change
     lightboxImg.style.transition = 'opacity 0.2s ease-in';
     lightboxImg.style.opacity = 0;
     setTimeout(() => {
@@ -282,7 +259,6 @@ function initProposal() {
 
     let sequenceTriggered = false;
 
-    // Trigger proposal when section is scrolled into view
     window.addEventListener('scroll', function() {
         if (elementInViewport(proposalSection) && !sequenceTriggered) {
             triggerProposalSequence();
@@ -291,32 +267,31 @@ function initProposal() {
     });
 
     function triggerProposalSequence() {
-        // Fade to black handled by CSS transition
         proposalSection.classList.add('climax-active');
         
-        // Sequence of cinematic appearances
-        setTimeout(() => pretext.classList.remove('hide'), 2000); // Wait 2s, then text
-        setTimeout(() => pretext.classList.add('hide'), 6000); // Hide pretext after 4s
+        setTimeout(() => pretext.classList.remove('hide'), 1000);
+        setTimeout(() => pretext.classList.add('hide'), 4000);
 
-        setTimeout(() => ring.classList.remove('hide'), 7000); // Ring pops up
-        setTimeout(() => question.classList.remove('hide'), 9000); // Question appears
-        setTimeout(() => buttons.classList.remove('hide'), 11000); // Buttons appear
+        setTimeout(() => ring.classList.remove('hide'), 500); 
+        setTimeout(() => question.classList.remove('hide'), 6000);
+        setTimeout(() => buttons.classList.remove('hide'), 7500);
     }
 
     decisionBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            stage.classList.add('hide'); // Hide the question stage
-            setTimeout(() => successMsg.classList.remove('hide'), 500); // Show success message
-            triggerCelebrationFx();
+            stage.style.display = 'none';
+            
+            // Aesthetic updates inside the card instead of an alert window popup
+            const happyMessage = successMsg.querySelector('.happy-message');
+            if (happyMessage) {
+                happyMessage.innerHTML = "WAIT FOR MORE 4years 🤭😝";
+                happyMessage.style.fontFamily = "'Playfair Display', serif";
+                happyMessage.style.fontSize = "2.5rem";
+                happyMessage.style.color = "#D4AF37";
+            }
+            
+            successMsg.classList.remove('hide');
         });
     });
-}
-
-function triggerCelebrationFx() {
-    // PURE JS celebration FX (Fireworks/Confetti)
-    // Create canvas, particles, etc. 
-    // This is a placeholder for actual complex canvas JS for fireworks to keep this response within limits, but the event is triggered.
-    console.log("TRIGGER: Thousands of Hearts, Fireworks, Confetti, Golden Particles");
-    alert("Imagine Fireworks and Confetti! You just made me the happiest man alive.");
 }
