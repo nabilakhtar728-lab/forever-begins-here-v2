@@ -8,8 +8,22 @@
 </head>
 <body class="is-loading">
 
+    <!-- AESTHETIC PASSCODE LOCK SCREEN -->
+    <div id="lock-screen">
+        <div class="lock-card glass-card">
+            <h2 class="luxury-title text-glow" style="font-size: 2rem;">Private Screening</h2>
+            <p class="names" style="font-size: 1.8rem; margin-bottom: 20px;">Akkie ❤️ Tahura</p>
+            <p style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; color: var(--gold);">Enter the year our journey started</p>
+            <div class="passcode-input-wrapper">
+                <input type="password" id="passcode-input" maxlength="4" placeholder="••••" autofocus autocomplete="off">
+            </div>
+            <button id="unlock-btn" class="premium-button text-glow" style="margin-top: 20px; padding: 10px 30px;">Unlock ❤️</button>
+            <p id="lock-error" class="hide" style="color: var(--rose-gold); margin-top: 15px; font-size: 0.9rem; letter-spacing: 1px;">Incorrect passcode, try again baby... 🤭</p>
+        </div>
+    </div>
+
     <!-- Preloader & Intro Sequence -->
-    <div id="preloader">
+    <div id="preloader" class="hide">
         <div class="preloader-content">
             <div id="particles-js"></div>
             <h1 class="studios-logo" data-reveal="cinematicFade">
