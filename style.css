@@ -700,3 +700,51 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* --- AESTHETIC PASSCODE LOCK SCREEN --- */
+#lock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+    transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+#lock-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.lock-card {
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.passcode-input-wrapper input {
+    width: 160px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--rose-gold);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-align: center;
+    letter-spacing: 8px;
+    outline: none;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+}
+
+.passcode-input-wrapper input:focus {
+    box-shadow: 0 0 15px var(--rose-gold-glow);
+    background: rgba(255, 255, 255, 0.1);
+}
