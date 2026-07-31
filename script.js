@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const beginBtn = document.getElementById('begin-story');
 
     const startDateStr = "10 August 2022 00:00:00";
-    const SECRET_CODE = "1331"; // Your custom lock screen password
+    const SECRET_CODE = "2022"; // Your custom lock screen password
 
     /* --- PASSCODE CHECK LOGIC --- */
     function checkPasscode() {
