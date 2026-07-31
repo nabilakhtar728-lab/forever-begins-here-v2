@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const beginBtn = document.getElementById('begin-story');
 
     const startDateStr = "10 August 2022 00:00:00";
-    const SECRET_CODE = "2022"; // Set pass code to the year you met
+    const SECRET_CODE = "1331"; // Your custom lock screen password
 
     /* --- PASSCODE CHECK LOGIC --- */
     function checkPasscode() {
@@ -176,7 +176,6 @@ function initLiveCounter(startDate) {
         counterElements.years.innerText = Math.floor(diff / msPerYear);
         counterElements.months.innerText = Math.floor((diff % msPerYear) / msPerMonth);
         counterElements.days.innerText = Math.floor((diff % msPerMonth) / msPerDay);
-        counterElements.hours.innerText = Math.floor((diff % msPerMonth) / msPerDay);
         counterElements.hours.innerText = Math.floor((diff % msPerDay) / msPerHour);
         counterElements.minutes.innerText = Math.floor((diff % msPerHour) / msPerMin);
         counterElements.seconds.innerText = Math.floor((diff % msPerMin) / msPerSec);
@@ -186,7 +185,7 @@ function initLiveCounter(startDate) {
     updateCounter();
 }
 
-const scrollElements = document.querySelectorAll('.js-scroll-animate, .timeline-item, .reason-card');
+const scrollElements = document.querySelectorAll('.js-scroll-animate, .reason-card');
 
 function initScrollAnimations() {
     animateOnScroll();
@@ -206,7 +205,7 @@ function animateOnScroll() {
 
 function elementInViewport(el) {
     const rect = el.getBoundingClientRect();
-    const threshold = window.innerHeight * 0.8;
+    const threshold = window.innerHeight * 0.85;
     return (rect.top <= threshold);
 }
 
@@ -286,7 +285,7 @@ function initProposal() {
         }
     });
 
-    fn = function triggerProposalSequence() {
+    function triggerProposalSequence() {
         proposalSection.classList.add('climax-active');
         
         setTimeout(() => pretext.classList.remove('hide'), 1000);
@@ -306,7 +305,7 @@ function initProposal() {
             if (happyMessage) {
                 happyMessage.innerHTML = "WAIT FOR MORE 4years 🤭😝";
                 happyMessage.style.fontFamily = "'Playfair Display', serif";
-                happyMessage.style.fontSize = "2.5rem";
+                happyMessage.style.fontSize = "2.3rem";
                 happyMessage.style.color = "#D4AF37";
             }
             
