@@ -1,24 +1,44 @@
 /* --- PURE JAVASCRIPT --- */
 
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
+    const lockScreen = document.getElementById('lock-screen');
+    const passcodeInput = document.getElementById('passcode-input');
+    const unlockBtn = document.getElementById('unlock-btn');
+    const lockError = document.getElementById('lock-error');
     const preloader = document.getElementById('preloader');
     const mainContent = document.getElementById('main-content');
     const body = document.body;
     const beginBtn = document.getElementById('begin-story');
 
-    // Dates
     const startDateStr = "10 August 2022 00:00:00";
+    const SECRET_CODE = "1331"; // Your custom lock screen password
 
-    /* --- INTRO / PRELOADER --- */
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            preloader.classList.add('fade-out');
-            mainContent.classList.add('fade-in');
-            body.classList.remove('is-loading');
-            animateOnScroll();
-        }, 4500); 
+    /* --- PASSCODE CHECK LOGIC --- */
+    function checkPasscode() {
+        if (passcodeInput.value === SECRET_CODE) {
+            lockScreen.classList.add('fade-out');
+            preloader.classList.remove('hide');
+            
+            // Trigger the cinematic preloader intro sequence
+            setTimeout(function() {
+                preloader.classList.add('fade-out');
+                mainContent.classList.add('fade-in');
+                body.classList.remove('is-loading');
+                animateOnScroll();
+            }, 4500);
+        } else {
+            lockError.classList.remove('hide');
+            passcodeInput.value = '';
+            passcodeInput.focus();
+            // Hide error after 3 seconds
+            setTimeout(() => lockError.classList.add('hide'), 3000);
+        }
+    }
+
+    unlockBtn.addEventListener('click', checkPasscode);
+    passcodeInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') checkPasscode();
     });
 
     /* --- Begin Our Story Button --- */
@@ -165,7 +185,7 @@ function initLiveCounter(startDate) {
     updateCounter();
 }
 
-const scrollElements = document.querySelectorAll('.js-scroll-animate, .timeline-item, .reason-card');
+const scrollElements = document.querySelectorAll('.js-scroll-animate, .reason-card');
 
 function initScrollAnimations() {
     animateOnScroll();
@@ -183,9 +203,10 @@ function animateOnScroll() {
     });
 }
 
+// Fixed threshold calculation for responsive iOS viewports
 function elementInViewport(el) {
     const rect = el.getBoundingClientRect();
-    const threshold = window.innerHeight * 0.8;
+    const threshold = window.innerHeight * 0.85;
     return (rect.top <= threshold);
 }
 
@@ -246,7 +267,6 @@ function changePhoto(direction) {
     }, 200);
 }
 
-/* 6. Proposal Emotional Climax */
 function initProposal() {
     const proposalSection = document.getElementById('proposal');
     const stage = document.getElementById('proposal-stage');
@@ -282,12 +302,12 @@ function initProposal() {
             e.stopPropagation();
             stage.style.display = 'none';
             
-            // Aesthetic updates inside the card instead of an alert window popup
+            // Replaces browser pop-up screen natively
             const happyMessage = successMsg.querySelector('.happy-message');
             if (happyMessage) {
                 happyMessage.innerHTML = "WAIT FOR MORE 4years 🤭😝";
                 happyMessage.style.fontFamily = "'Playfair Display', serif";
-                happyMessage.style.fontSize = "2.5rem";
+                happyMessage.style.fontSize = "2.3rem";
                 happyMessage.style.color = "#D4AF37";
             }
             
